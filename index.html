@@ -1,0 +1,82 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript">
+	
+	var ajaxBase = function()
+	{
+		this.url = '';
+		this.data = {};
+		this.type = 'POST';
+		this.errors = '';
+		
+		this.get = function(callback)
+		{
+			var that = this;
+			
+			if(that.url == '')
+				that.errors += 'ERROR: "url" can\'t be empty\r\n';
+			
+			if(that.errors == '')
+			{
+				$.ajax({
+					url: that.url,
+					type: that.type,
+					data: that.data,
+					success: callback
+				});
+				
+				return true;
+			}
+			
+			alert(that.errors);
+			return false;
+		}
+		
+		this.setConfig = function(params)
+		{
+			this.url = params.url;
+			this.data = params.data;
+			this.type = params.type;
+			
+			return this;
+		}
+	}
+	
+	var template = function()
+	{
+	
+		this.data = '';
+		
+		this.get = function(name,id)
+		{
+			callback = function(data)
+			{
+				$(id).html(data);
+			}
+			
+			params = {
+				'url'	:	name + '.html',
+				'type'	:	'POST',
+				'data'	:	{}
+			};
+			
+			(new ajaxBase).setConfig(params).get(callback);
+			
+			return this.data;
+		}
+	}
+
+	$(function(){
+		var tempate = (new template).get('loginForm','#main');
+	});
+</script>
+</head>
+<body>
+	<div id="main">
+
+	</div>
+</body>
+</html>

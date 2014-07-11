@@ -1,0 +1,59 @@
+#main {
+    height: 100%;
+    width: 100%;
+}
+.clear {
+    clear: both;
+}
+label {
+    float: left;
+    font-weight: 100;
+    letter-spacing: 1px;
+    line-height: 30px;
+    padding-right: 10px;
+    text-align: right;
+    width: 62px;
+}
+input[type="text"], input[type="password"] {
+    height: 29px;
+    padding: 0 10px;
+    text-shadow: 1px 1px 1px black;
+    width: 202px;
+}
+#loginPanel {
+    border: 1px solid;
+    height: 140px;
+    left: 38%;
+    position: relative;
+    top: 50%;
+    width: 291px;
+}
+#loginPanel #submit {
+	left: 39%;
+	position: absolute;
+}
+#loginPanel .loginFormHead {
+    background: none repeat scroll 0 0 #4682b4;
+    border-bottom: 1px solid;
+    font-weight: bold;
+    height: 20px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+}
+#loginPanel .loginFormBody {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+#loginPanel .inputLine {
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 6px;
+}
+#loginPanel .inputLine p {
+    margin: 0 0 10px;
+}
