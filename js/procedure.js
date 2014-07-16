@@ -11,11 +11,19 @@ $(function(){
 	});
 	
 	$('#main').on('click','.menuItem',function(){
-		console.info($(this).attr('data-action'))
 		if($(this).attr('data-action') != undefined)
 		{
 			method = $(this).attr('data-action');
-			(new actions)[method]();
+			(new actions)[method]($(this));
+		}
+	});
+	
+	$(document).on('click','.button',function(){
+		console.info($(this));
+		if($(this).attr('data-action') != undefined)
+		{
+			method = $(this).attr('data-action');
+			(new actions)[method]($(this));
 		}
 	});
 });

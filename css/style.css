@@ -12,6 +12,84 @@
 .hide {
 	display: none;
 }
+.button {
+	cursor: pointer;
+}
+#fullHeight {
+    background: none repeat scroll 0 0 #000000;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+#editTypesCategoryWindow {
+    background: none repeat scroll 0 0 #ffffff;
+    height: 133px;
+    left: 33%;
+    position: absolute;
+    top: 33%;
+    width: 328px;
+    z-index: 2000;
+}
+#confirmWindow {
+    background: none repeat scroll 0 0 #ffffff;
+    height: 67px;
+    left: 33%;
+    position: absolute;
+    top: 33%;
+    width: 203px;
+    z-index: 2000;
+}
+#confirmWindow .head {
+	background: #4682b4;
+	height: 20px;
+}
+#confirmWindow .label {
+    float: left;
+    height: 16px;
+    margin-left: 30%;
+}
+#confirmWindow .closeButton {
+	float: right;
+}
+#confirmWindow .body {
+	height: 47px
+}
+
+#confirmWindow .body .okButton {
+    background: none repeat scroll 0 0 gray;
+    height: 22px;
+    margin-left: 13px;
+    margin-top: 21px;
+    width: 57px;
+	float: left;
+	line-height: 22px;
+	text-align: center;
+}
+#confirmWindow .body .cancelButton {
+    background: none repeat scroll 0 0 gray;
+    float: right;
+    height: 22px;
+    margin-right: 13px;
+    margin-top: 21px;
+    width: 57px;
+	line-height: 22px;
+	text-align: center;
+}
+#editTypesCategoryWindow .head {
+	background: #4682b4;
+	height: 20px;
+}
+#editTypesCategoryWindow .label {
+    float: left;
+    height: 16px;
+    margin-left: 30%;
+}
+#editTypesCategoryWindow .closeButton {
+	float: right;
+}
 #ajaxLoader {
     left: 50%;
     position: absolute;
@@ -102,15 +180,19 @@ input[type="text"], input[type="password"] {
     width: 100%;
 }
 #categoriesTypesTable .contentLine {
-    height: 20px;
-    width: 230px;
+    height: 33px;
+    width: 316px;
 }
 #categoriesTypesTable .contentColumn {
     float: left;
-    height: 20px;
+    height: 33px;
+	min-width: 38px;
+	display: table-cell;
+    line-height: 33px;
 }
 #categoriesTypesTable .contentColumn.id {
     width: 30px;
+	text-align: center;
 }
 #categoriesTypesTable .contentColumn.name {
     width: 200px;
