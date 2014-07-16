@@ -14,4 +14,9 @@ var registry = function()
 	{
 		localStorage.removeItem(key);
 	}
+	
+	this.getToken = function()
+	{
+		return (localStorage.getItem('token') == undefined) ? false : localStorage.getItem('token');
+	}
 }
