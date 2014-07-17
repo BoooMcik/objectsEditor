@@ -58,25 +58,28 @@
 	height: 47px
 }
 
-#confirmWindow .body .okButton {
+.window .body .okButton {
     background: none repeat scroll 0 0 gray;
+    bottom: 7px;
+    float: left;
     height: 22px;
+    left: 20px;
     margin-left: 13px;
-    margin-top: 21px;
-    width: 57px;
-	float: left;
-	line-height: 22px;
-	text-align: center;
+    min-width: 57px;
+    position: absolute;
+    text-align: center;
 }
-#confirmWindow .body .cancelButton {
+.window .body .cancelButton {
     background: none repeat scroll 0 0 gray;
+    bottom: 7px;
     float: right;
     height: 22px;
+    line-height: 22px;
     margin-right: 13px;
-    margin-top: 21px;
-    width: 57px;
-	line-height: 22px;
-	text-align: center;
+    min-width: 57px;
+    position: absolute;
+    right: 20px;
+    text-align: center;
 }
 #editTypesCategoryWindow .head {
 	background: #4682b4;
@@ -105,7 +108,7 @@ label {
     line-height: 30px;
     padding-right: 10px;
     text-align: right;
-    width: 62px;
+    min-width: 62px;
 }
 input[type="text"], input[type="password"] {
     height: 29px;
@@ -142,8 +145,8 @@ input[type="text"], input[type="password"] {
     right: 0;
     top: 20px;
 }
-#loginPanel .inputLine {
-    margin-left: 4px;
+.inputLine {
+    margin-left: 10px;
     margin-right: 4px;
     margin-top: 6px;
 }

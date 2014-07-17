@@ -1,9 +1,9 @@
 var REST = function()
 {
-	this.get = function(method,callback,params = {})
+	this.get = function(method,callback,params)
 	{
 		var ajax = new ajaxBase();
 		
-		ajax.post('http://api.638.local/' + method,callback,params);	
+		ajax.post('http://rest.my.local/' + method,callback,params);	
 	}
 }

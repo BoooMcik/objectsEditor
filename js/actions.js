@@ -56,9 +56,89 @@ var actions = function()
 		(new template).get('categoriesTypes','#body');
 	}
 	
-	this.editTypesCategory = function()
+	this.editTypesCategory = function(sender)
 	{
-		(new modalWindow('editTypesCategoryWindow')).show();
+		
+		var callback = function(data)
+		{
+			var params = {
+				'WindowHeight'	:	{
+					'element'	:	'#editTypesCategoryWindow',
+					'css'		:	'height',
+					'value'		:	'100px'
+				},
+				'OK'	:	{
+					'element'	:	'.okButton',
+					'attr'		:	'data-action',
+					'value'		:	'confirmTypeCategoryEdit'
+				},
+				'Cancel'	:	{
+					'element'	:	'.cancelButton',
+					'attr'		:	'data-action',
+					'value'		:	'closeWindow'
+				},
+				'Offset'	:	{
+					'element'	:	'#editTypesCategoryWindow',
+					'css'		:	'margin-top',
+					'value'		:	((sender.offset().top - 200) < 0) ? '0' : (sender.offset().top - 200) + "px"
+				}
+			};
+			if(sender.attr('data-id') != undefined)
+			{
+				params.Name = {
+					'element'	:	'#name',
+					'attr'		:	'value',
+					'value'		:	data.data[0].name
+				};
+				params.ID = {
+					'element'	:	'#id',
+					'attr'		:	'value',
+					'value'		:	sender.attr('data-id')
+				};
+			}
+			
+			(new modalWindow('editTypesCategoryWindow')).show(params);		
+		}
+		
+		var data = {
+			'token'	:	(new registry).getToken(),
+			'id'	:	sender.attr('data-id')
+		};
+		
+		(new REST).get('CategoriesTypes.get.json',callback,data)
+		
+	}
+	
+	this.confirmTypeCategoryEdit = function(sender)
+	{
+		if($('#name').val() == '')
+		{
+			alert('Не заполнено название');
+			return;
+		}
+		
+		var data = {
+				'token'	:	(new registry).getToken(),
+				'name'	:	$('#name').val()
+		};	
+		
+		var that = this;
+		
+		var callback = function(data)
+		{
+			if(data.status == '200')
+				that.closeWindow()
+			else
+				alert('Ошибка при создании категории');
+		};
+		
+		if($('#id').val() == '')
+		{
+			(new REST).get('CategoriesTypes.add.json',callback,data);
+		} else {
+			data.id = $('#id').val();
+			(new REST).get('CategoriesTypes.edit.json',callback,data);
+		}
 	}
 	
 	this.deleteTypeCategory = function(sender)
@@ -72,7 +152,7 @@ var actions = function()
 			'Cancel'	:	{
 				'element'	:	'.cancelButton',
 				'attr'		:	'data-action',
-				'value'		:	'cancelTypeCategoryDelete'
+				'value'		:	'closeWindow'
 			},
 			'ID'		:	{
 				'element'	:	'#id',
@@ -86,20 +166,17 @@ var actions = function()
 			}
 		};
 		
-		console.info(params);
 		(new modalWindow).showConfirmWindow(params);
-	}
-	
-	this.cancelTypeCategoryDelete = function()
-	{
-		this.closeWindow();		
 	}
 	
 	this.confirmTypeCategoryDelete = function()
 	{
+	
+		var that = this;
+	
 		var callback = function(data)
 		{
-			console.info(data);
+			that.closeWindow();
 		};
 		
 		var params = {
@@ -107,8 +184,8 @@ var actions = function()
 			'id'	:	$((new modalWindow).getConfirmWindowId()).find('#id').val()
 		};
 		
-		(new REST).get('CategoriesTypes.delete.json',callback,params);
-		this.closeWindow();
+		(new REST).delete('CategoriesTypes.delete.json',callback,params);
+
 	}
 	
 	this.closeWindow = function()

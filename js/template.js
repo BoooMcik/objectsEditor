@@ -3,7 +3,7 @@ var template = function()
 
 	this.data = '';
 	
-	this.get = function(name,id, params = {}, append = false)
+	this.get = function(name,id, params, append)
 	{
 		callback = function(data)
 		{
@@ -21,6 +21,8 @@ var template = function()
 						$(value.element).css(value.css,value.value);
 				});
 			}
+			
+			(new ajaxLoader).hide();
 		}
 		
 		var ajax = new ajaxBase();

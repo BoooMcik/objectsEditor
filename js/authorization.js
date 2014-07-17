@@ -10,12 +10,14 @@ var authorization = function()
 			{
 				(new registry).set('token',data.token);
 				(new actions).loadControlPanel();
+				(new ajaxLoader).hide();
 			}
 		}
 		
+		
 		var ajax = new ajaxBase();
 		
-		ajax.post('http://api.638.local/users.auth.json',callback,{
+		ajax.post('http://rest.my.local/users.logout.json',callback,{
 			'login' 	: login,
 			'password' 	: password
 		});		
@@ -37,12 +39,13 @@ var authorization = function()
 			{
 				(new registry).unset('token');
 				(new template).get('loginForm','#main');
+				(new ajaxLoader).hide();
 			}
 		}
 		
 		var ajax = new ajaxBase();
 		
-		ajax.post('http://api.638.local/users.logout.json',callback,{
+		ajax.post('http://rest.my.local/users.logout.json',callback,{
 			'token' 	: (new registry).get('token')
 		});			
 	}

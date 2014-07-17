@@ -31,7 +31,7 @@ var ajaxBase = function()
 	
 	this.post = function(url,callback,params)
 	{
-		params = {
+		var params = {
 			'url'	:	url,
 			'type'	:	'POST',
 			'data'	:	params,

@@ -9,7 +9,7 @@ var ajaxLoader = function(img)
 		$("#ajaxLoader").css('display','block');
 	}
 	
-	this.hide = function(object)
+	this.hide = function()
 	{
 		$('#ajaxLoader').css('display' , 'none');
 		$('#ajaxLoader').hide();			

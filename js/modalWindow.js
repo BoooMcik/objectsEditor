@@ -5,9 +5,9 @@ var modalWindow = function(templateFile)
 	$('#fullHeight').height($(window).height());
 
 	
-	this.show = function(data = {})
+	this.show = function(data)
 	{
-		(new template).get(this.templateFile,this.modalWindowPlace,{},true);
+		(new template).get(this.templateFile,this.modalWindowPlace,data,true);
 		$(this.modalWindowPlace).css('display','block');
 	}
 	

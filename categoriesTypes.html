@@ -1,3 +1,15 @@
+<script type="text/javascript">
+	$(function(){
+		$("#mm").menu();
+		$(document).bind('contextmenu',function(e){
+			e.preventDefault();
+			$("#mm").menu('show',{
+				left: e.pageX,
+				top: e.pageY
+			});
+		});
+	});
+</script>
 <div id="categoriesTypesTable">
 	<div class="tableHead">
 		<div class="contentLine">
@@ -14,3 +26,7 @@
 		</div>
 	</div>
 </div>
+	<div id="mm" class="easyui-menu" style="width:120px;">
+		<div onclick="javascript:(new actions).editTypesCategory($(this))">Новая</div>
+		<div onclick="javasctipr:(new actions).categoriesTypes()">Обновить</div>
+	</div>
